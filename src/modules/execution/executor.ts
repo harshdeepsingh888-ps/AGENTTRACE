@@ -10,7 +10,7 @@ import type {
   SerializableError,
 } from "./types";
 
-function buildDirectParents(graph: Graph): Map<NodeId, NodeId[]> {
+export function buildDirectParents(graph: Graph): Map<NodeId, NodeId[]> {
   const directParents = new Map<NodeId, NodeId[]>();
 
   for (const node of graph.nodes) {
@@ -24,7 +24,7 @@ function buildDirectParents(graph: Graph): Map<NodeId, NodeId[]> {
   return directParents;
 }
 
-function normalizeError(error: unknown): SerializableError {
+export function normalizeError(error: unknown): SerializableError {
   if (error instanceof Error) {
     return { name: error.name, message: error.message };
   }

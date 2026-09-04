@@ -37,3 +37,10 @@ export interface PersistedRunDetail {
   run: PersistedRun;
   nodeResults: PersistedNodeResult[];
 }
+
+export class RunNotFoundError extends Error {
+  constructor(runId: RunId) {
+    super(`Run not found: ${runId}`);
+    this.name = "RunNotFoundError";
+  }
+}

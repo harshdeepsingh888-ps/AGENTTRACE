@@ -52,3 +52,19 @@ export interface ExecutionResult {
   nodeResults: NodeExecutionResult[];
   status: NodeExecutionStatus;
 }
+
+/**
+ * Result of a partial (rerun-from-node) execution. `executionOrder` and
+ * `nodeResults` cover only nodes that actually ran during this rerun -
+ * `cachedNodeIds` lists everything else (the target's ancestors plus any
+ * unrelated nodes), which supplied their outputs from a prior run instead
+ * of being re-executed. Cached nodes intentionally have no NodeExecutionResult
+ * here: they were not executed during this rerun, so fabricating
+ * startedAt/completedAt/durationMs for them would misrepresent what happened.
+ */
+export interface PartialExecutionResult {
+  executionOrder: NodeId[];
+  cachedNodeIds: NodeId[];
+  nodeResults: NodeExecutionResult[];
+  status: NodeExecutionStatus;
+}
