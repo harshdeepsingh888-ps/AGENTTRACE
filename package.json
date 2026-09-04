@@ -9,7 +9,8 @@
     "build": "tsc",
     "start": "node dist/server.js",
     "typecheck": "tsc --noEmit",
-    "test": "tsx --test test/graph.test.ts test/executor.test.ts"
+    "test": "tsx --test test/graph.test.ts test/executor.test.ts test/migrate.test.ts",
+    "db:migrate": "tsx src/config/migrate.ts"
   },
   "dependencies": {
     "cors": "^2.8.5",
